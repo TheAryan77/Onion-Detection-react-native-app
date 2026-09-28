@@ -1,0 +1,14 @@
+# Secrets: the Roboflow key lives only in backend/.env
+.env
+!.env.example
+backend/.venv/
+__pycache__/
+.pytest_cache/
+*.pred.jpg
+node_modules/
+mobile/.expo/
+mobile/dist/
+.DS_Store
+
+# Local test photos (screenshots / stock images; not ours to publish)
+backend/photos/

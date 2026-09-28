@@ -1,0 +1,14 @@
+{
+  "spec_name": "DEMO DEFAULTS - replace with the procurement specification you cite (NCCF/NAFED onion spec or AGMARK grade designation rules)",
+  "min_confidence": { "cuts": 0.45, "rotten": 0.40, "sprout": 0.40 },
+  "size_mm": { "min": 45, "max": 65 },
+  "category_by_defect": {
+    "cuts": "URS",
+    "rotten": "URS",
+    "sprout": "URS",
+    "undersized": "URS",
+    "oversized": "URS"
+  },
+  "lot": { "grade_a_min_pct": 90, "reject_above_pct": 100 },
+  "notes": "Allowed categories: GRADE_A, URS, REJECT. If your spec rejects rotten bulbs outright, set rotten to REJECT and lower reject_above_pct. Set size_mm.max to null to ignore oversize."
+}

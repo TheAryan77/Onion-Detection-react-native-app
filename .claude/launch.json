@@ -1,0 +1,32 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd backend && .venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "backend-mock",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd backend && MOCK_MODE=true .venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "mobile-web",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd mobile && EXPO_PUBLIC_API_URL=http://localhost:8000 npx expo start --web --port 8081"
+      ],
+      "port": 8081
+    }
+  ]
+}
