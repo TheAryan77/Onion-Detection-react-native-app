@@ -11,7 +11,7 @@ export function VerdictBanner({ verdict, total }: { verdict: LotVerdict; total: 
     <View style={[styles.box, { backgroundColor: categoryTint[verdict], borderColor: color + '44' }]}>
       <Ionicons name={categoryIcon[verdict]} size={44} color={color} />
       <View style={{ flex: 1 }}>
-        <Text style={[styles.caption, { color }]}>Lot verdict · {total} onions checked</Text>
+        <Text style={[styles.caption, { color }]}>Lot verdict · {total} {total === 1 ? 'onion' : 'onions'} checked</Text>
         <Text style={[styles.title, { color }]}>{categoryLabel[verdict]}</Text>
       </View>
     </View>

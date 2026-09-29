@@ -11,6 +11,15 @@
       "port": 8000
     },
     {
+      "name": "mobile",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd mobile && npx expo start --port 8081"
+      ],
+      "port": 8081
+    },
+    {
       "name": "backend-mock",
       "runtimeExecutable": "sh",
       "runtimeArgs": [

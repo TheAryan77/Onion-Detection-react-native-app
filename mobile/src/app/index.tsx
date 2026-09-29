@@ -10,7 +10,7 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { ThemeToggleButton } from '@/components/ThemeToggle';
 import { Card, IconBubble, Pill, SectionTitle, type IconName } from '@/components/ui';
 import { pickFromLibrary, startAnalysis } from '@/lib/pending';
-import { getSettings } from '@/lib/settings';
+import { findWorkingServer } from '@/lib/settings';
 import { listReports } from '@/lib/storage';
 import { categoryIcon, categoryLabel, pageWidth, radius , makeStyles, useTheme } from '@/theme';
 import type { ReportMeta, ScanMode } from '@/types';
@@ -33,7 +33,7 @@ export default function Home() {
   useFocusEffect(
     useCallback(() => {
       listReports().then(setReports);
-      getSettings().then((s) => pingHealth(s.apiUrl)).then(setOnline);
+      findWorkingServer((url) => pingHealth(url, 5_000)).then((url) => setOnline(url !== null));
     }, []),
   );
 
@@ -118,7 +118,7 @@ export default function Home() {
                 <View style={{ flex: 1 }}>
                   <Text style={styles.itemTitle}>{r.batchId}</Text>
                   <Text style={styles.itemSub}>
-                    {new Date(r.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} · {r.total} onions · {r.mode === 'single' ? 'single' : 'batch'}
+                    {new Date(r.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} · {r.total} {r.total === 1 ? 'onion' : 'onions'} · {r.mode === 'single' ? 'single' : 'batch'}
                   </Text>
                 </View>
                 <View style={{ alignItems: 'flex-end', gap: 4 }}>
